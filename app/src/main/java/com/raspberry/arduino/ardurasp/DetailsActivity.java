@@ -19,6 +19,7 @@ public class DetailsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details_activity);
 
+
         String title = getIntent().getStringExtra("title");
 
         Bitmap bitmap = Global.img;
