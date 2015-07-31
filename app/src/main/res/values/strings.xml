@@ -8,5 +8,7 @@
     <array name="image_ids">
         <item name="Arduino Uno">@drawable/arduino_uno</item>
         <item name="Arduino Yun">@drawable/arduino_yun</item>
+        <item name="Arduino Due">@drawable/arduino_due</item>
+        <item name="Arduino Mega">@drawable/arduino_mega</item>
     </array>
 </resources>
