@@ -3,4 +3,10 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+
+    <array name="image_ids">
+        <item name="Arduino Uno">@drawable/arduino_uno</item>
+        <item name="Arduino Yun">@drawable/arduino_yun</item>
+    </array>
 </resources>
