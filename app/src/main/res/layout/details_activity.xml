@@ -5,12 +5,14 @@
     android:orientation="vertical"
     android:background="#000">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
+
+
+    <com.ortiz.touch.TouchImageView
+        android:id="@+id/img"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter" />
+        />
+
 
     <TextView
         android:id="@+id/title"
@@ -21,4 +23,7 @@
         android:padding="10dp"
         android:textColor="#fff"
         android:textSize="20dp" />
+
+
+
 </FrameLayout>

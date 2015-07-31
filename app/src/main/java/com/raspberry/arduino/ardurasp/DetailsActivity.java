@@ -2,15 +2,17 @@ package com.raspberry.arduino.ardurasp;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 import android.os.Bundle;
-import android.widget.ImageView;
+
 import android.widget.TextView;
 
-/**
- * Created by riccardo on 31/07/15.
- */
+import com.ortiz.touch.TouchImageView;
+
+
 public class DetailsActivity extends Activity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,32 @@ public class DetailsActivity extends Activity {
         TextView titleTextView = (TextView) findViewById(R.id.title);
         titleTextView.setText(title);
 
-        ImageView imageView = (ImageView) findViewById(R.id.image);
-        imageView.setImageBitmap(bitmap);
+
+
+
+        TouchImageView img = (TouchImageView) findViewById(R.id.img);
+        img.setImageBitmap(bitmap);
+
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

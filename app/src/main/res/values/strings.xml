@@ -10,5 +10,8 @@
         <item name="Arduino Yun">@drawable/arduino_yun</item>
         <item name="Arduino Due">@drawable/arduino_due</item>
         <item name="Arduino Mega">@drawable/arduino_mega</item>
+        <item name="Arduino Micro">@drawable/arduino_micro</item>
+        <item name="Arduino LilyPad USB">@drawable/arduino_lilypadusb</item>
+        <item name="Arduino Mini">@drawable/arduino_mini</item>
     </array>
 </resources>
