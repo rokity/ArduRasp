@@ -27,8 +27,14 @@ import java.util.jar.Attributes;
 
 
 public class MainActivity extends Activity {
+
+
+
     private GridView gridView;
     private GridViewAdapter gridAdapter;
+    public Boolean on = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +46,11 @@ public class MainActivity extends Activity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 ImageItem item = (ImageItem) parent.getItemAtPosition(position);
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                item.getImage().compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] bytes = stream.toByteArray();
 
                 //Create intent
                 Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
                 intent.putExtra("title", item.getTitle());
                 Global.img = item.getImage();
-               // intent.putExtra("image",bytes);
 
                 //Start details activity
                 startActivity(intent);
@@ -82,7 +84,7 @@ public class MainActivity extends Activity {
         ArrayList<String> returns=new ArrayList<String>();
         for (String value : array) {
             String[] values=value.split("/")[2].split("_");
-             returns.add((values[0]+" "+values[1].substring(0, values[1].lastIndexOf('.'))).toUpperCase());
+            returns.add((values[0] + " " + values[1].substring(0, values[1].lastIndexOf('.'))).toUpperCase());
         }
             return returns.toArray(array);
     }
