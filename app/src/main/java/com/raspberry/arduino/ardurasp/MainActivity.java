@@ -1,30 +1,23 @@
 package com.raspberry.arduino.ardurasp;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.ActionBarActivity;
+import android.os.Build;
+import android.support.v4.widget.DrawerLayout;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.io.ByteArrayOutputStream;
+import android.widget.ListView;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.jar.Attributes;
-
 
 public class MainActivity extends Activity {
 
@@ -34,37 +27,61 @@ public class MainActivity extends Activity {
     private GridViewAdapter gridAdapter;
     public Boolean on = false;
 
+    //Navigation Drawer
+    private String[] mPlanetTitles;
+    public DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        gridView = (GridView) findViewById(R.id.gridView);
-        gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData());
-        gridView.setAdapter(gridAdapter);
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                ImageItem item = (ImageItem) parent.getItemAtPosition(position);
+        mPlanetTitles = getResources().getStringArray(R.array.planets_array);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-                //Create intent
-                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                intent.putExtra("title", item.getTitle());
-                Global.img = item.getImage();
 
-                //Start details activity
-                startActivity(intent);
+
+
+        // Set the adapter for the list view
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, mPlanetTitles));
+        // Set the list's click listener
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                getActionBar().setTitle(mTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
-        });
 
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getActionBar().setTitle(mDrawerTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+
+        if (savedInstanceState == null) {
+            selectItem(0);
+        }
 
     }
 
 
-    private ArrayList<ImageItem> getData() {
+    private ArrayList<ImageItem> getData(int array) {
         final ArrayList<ImageItem> imageItems = new ArrayList<>();
-        TypedArray imgs = getResources().obtainTypedArray(R.array.image_ids);
-        String[] some_array = get_names_attrivute(getResources().getStringArray(R.array.image_ids));
+        TypedArray imgs = getResources().obtainTypedArray(array);
+        String[] some_array = get_names_attrivute(getResources().getStringArray(array));
 
 
         for (int i = 0; i < imgs.length(); i++) {
@@ -84,7 +101,14 @@ public class MainActivity extends Activity {
         ArrayList<String> returns=new ArrayList<String>();
         for (String value : array) {
             String[] values=value.split("/")[2].split("_");
-            returns.add((values[0] + " " + values[1].substring(0, values[1].lastIndexOf('.'))).toUpperCase());
+            String app="";
+            for(String par : values){
+                if(par.lastIndexOf(".")==-1)
+                app=app+" "+par;
+                else
+                    app=app+" "+par.substring(0, par.lastIndexOf('.'));
+            }
+            returns.add(app.toUpperCase());
         }
             return returns.toArray(array);
     }
@@ -93,10 +117,80 @@ public class MainActivity extends Activity {
 
 
 
+    private CharSequence mDrawerTitle;
+    private CharSequence mTitle;
 
 
 
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            selectItem(position);
+        }
+    }
 
+    /** Swaps fragments in the main content view */
+    private void selectItem(int position) {
+        // Create a new fragment and specify the planet to show based on position
+        switch (position) {
+            case 0: {
+
+                gridView = (GridView) findViewById(R.id.gridView);
+                gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData(R.array.arduino_boards));
+                gridView.setAdapter(gridAdapter);
+
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                        ImageItem item = (ImageItem) parent.getItemAtPosition(position);
+
+                        //Create intent
+                        Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                        intent.putExtra("title", item.getTitle());
+                        Global.img = item.getImage();
+
+                        //Start details activity
+                        startActivity(intent);
+                    }
+                });
+                break;
+            }
+            case 1:{
+                gridView = (GridView) findViewById(R.id.gridView);
+                gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData(R.array.raspberry_boards));
+                gridView.setAdapter(gridAdapter);
+
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                        ImageItem item = (ImageItem) parent.getItemAtPosition(position);
+
+                        //Create intent
+                        Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                        intent.putExtra("title", item.getTitle());
+                        Global.img = item.getImage();
+
+                        //Start details activity
+                        startActivity(intent);
+                    }
+                });
+
+                break;
+            }
+
+
+        }
+
+
+        // Highlight the selected item, update the title, and close the drawer
+        mDrawerList.setItemChecked(position, true);
+        setTitle(mPlanetTitles[position]);
+        mDrawerLayout.closeDrawer(mDrawerList);
+    }
+
+    @Override
+    public void setTitle(CharSequence title) {
+        mTitle = title;
+        getActionBar().setTitle(mTitle);
+    }
 
 
 
@@ -130,4 +224,7 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }
