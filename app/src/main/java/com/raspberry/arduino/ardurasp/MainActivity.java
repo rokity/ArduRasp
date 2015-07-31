@@ -2,13 +2,14 @@ package com.raspberry.arduino.ardurasp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.v4.widget.DrawerLayout;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -155,6 +156,7 @@ public class MainActivity extends Activity {
                 break;
             }
             case 1:{
+
                 gridView = (GridView) findViewById(R.id.gridView);
                 gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData(R.array.raspberry_boards));
                 gridView.setAdapter(gridAdapter);
@@ -184,6 +186,8 @@ public class MainActivity extends Activity {
         mDrawerList.setItemChecked(position, true);
         setTitle(mPlanetTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
     }
 
     @Override
@@ -194,7 +198,18 @@ public class MainActivity extends Activity {
 
 
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
 
 
 
@@ -212,19 +227,23 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
+        // Handle your other action bar items...
 
         return super.onOptionsItemSelected(item);
     }
 
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // If the nav drawer is open, hide action items related to the content view
+        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+        menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
+        return super.onPrepareOptionsMenu(menu);
+    }
 
 }
