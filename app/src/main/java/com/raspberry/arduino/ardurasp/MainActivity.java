@@ -1,5 +1,6 @@
 package com.raspberry.arduino.ardurasp;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -47,6 +48,20 @@ public class MainActivity extends Activity {
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
 
+        gridView = (GridView) findViewById(R.id.gridView);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                ImageItem item = (ImageItem) parent.getItemAtPosition(position);
+
+                //Create intent
+                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                intent.putExtra("title", item.getTitle());
+                Global.img = item.getImage();
+
+                //Start details activity
+                startActivity(intent);
+            }
+        });
 
 
         // Set the adapter for the list view
@@ -58,6 +73,7 @@ public class MainActivity extends Activity {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
 
             /** Called when a drawer has settled in a completely closed state. */
+            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 getActionBar().setTitle(mTitle);
@@ -65,6 +81,7 @@ public class MainActivity extends Activity {
             }
 
             /** Called when a drawer has settled in a completely open state. */
+            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 getActionBar().setTitle(mDrawerTitle);
@@ -131,6 +148,7 @@ public class MainActivity extends Activity {
     }
 
     /** Swaps fragments in the main content view */
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void selectItem(int position) {
         // Create a new fragment and specify the planet to show based on position
         switch (position) {
@@ -140,40 +158,16 @@ public class MainActivity extends Activity {
                 gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData(R.array.arduino_boards));
                 gridView.setAdapter(gridAdapter);
 
-                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                        ImageItem item = (ImageItem) parent.getItemAtPosition(position);
 
-                        //Create intent
-                        Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                        intent.putExtra("title", item.getTitle());
-                        Global.img = item.getImage();
-
-                        //Start details activity
-                        startActivity(intent);
-                    }
-                });
                 break;
             }
             case 1:{
 
-                gridView = (GridView) findViewById(R.id.gridView);
+
                 gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData(R.array.raspberry_boards));
                 gridView.setAdapter(gridAdapter);
 
-                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                        ImageItem item = (ImageItem) parent.getItemAtPosition(position);
 
-                        //Create intent
-                        Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                        intent.putExtra("title", item.getTitle());
-                        Global.img = item.getImage();
-
-                        //Start details activity
-                        startActivity(intent);
-                    }
-                });
 
                 break;
             }
@@ -190,6 +184,7 @@ public class MainActivity extends Activity {
         getActionBar().setHomeButtonEnabled(true);
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
