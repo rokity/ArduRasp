@@ -8,6 +8,7 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -96,6 +97,26 @@ public class MainActivity extends Activity {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private ArrayList<ImageItem> getData(int array) {
         final ArrayList<ImageItem> imageItems = new ArrayList<>();
         TypedArray imgs = getResources().obtainTypedArray(array);
@@ -147,41 +168,35 @@ public class MainActivity extends Activity {
         }
     }
 
-    /** Swaps fragments in the main content view */
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    private void selectItem(int position) {
-        // Create a new fragment and specify the planet to show based on position
-        switch (position) {
-            case 0: {
 
-                gridView = (GridView) findViewById(R.id.gridView);
-                gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData(R.array.arduino_boards));
-                gridView.setAdapter(gridAdapter);
+    public void onPostClosed(int position){
+        if (position == 0)
+            gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData(R.array.arduino_boards));
+        else
+            gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData(R.array.raspberry_boards));
 
 
-                break;
-            }
-            case 1:{
-
-
-                gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData(R.array.raspberry_boards));
-                gridView.setAdapter(gridAdapter);
-
-
-
-                break;
-            }
-
-
-        }
-
-
+        gridView.setAdapter(gridAdapter);
         // Highlight the selected item, update the title, and close the drawer
         mDrawerList.setItemChecked(position, true);
         setTitle(mPlanetTitles[position]);
-        mDrawerLayout.closeDrawer(mDrawerList);
+
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
+    }
+
+    /** Swaps fragments in the main content view */
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+    private void selectItem(final int position) {
+        // Create a new fragment and specify the planet to show based on position
+        mDrawerLayout.closeDrawer(mDrawerList);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+               onPostClosed(position);
+            }
+        }, 200);
+
+        //getActionBar().setHomeButtonEnabled(true);
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -233,12 +248,6 @@ public class MainActivity extends Activity {
     }
 
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // If the nav drawer is open, hide action items related to the content view
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
-        return super.onPrepareOptionsMenu(menu);
-    }
+
 
 }
