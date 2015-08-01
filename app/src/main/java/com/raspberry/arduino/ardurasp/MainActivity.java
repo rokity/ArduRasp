@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,7 +44,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        overridePendingTransition(0,0);
         mPlanetTitles = getResources().getStringArray(R.array.planets_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -120,7 +121,7 @@ public class MainActivity extends Activity {
     private ArrayList<ImageItem> getData(int array) {
         final ArrayList<ImageItem> imageItems = new ArrayList<>();
         TypedArray imgs = getResources().obtainTypedArray(array);
-        String[] some_array = get_names_attrivute(getResources().getStringArray(array));
+        String[] some_array = get_names_attribute(getResources().getStringArray(array));
 
 
         for (int i = 0; i < imgs.length(); i++) {
@@ -136,17 +137,18 @@ public class MainActivity extends Activity {
 
 
 
-    public String[] get_names_attrivute(String[] array){
+    public String[] get_names_attribute(String[] array){
         ArrayList<String> returns=new ArrayList<String>();
         for (String value : array) {
             String[] values=value.split("/")[2].split("_");
             String app="";
-            for(String par : values){
-                if(par.lastIndexOf(".")==-1)
-                app=app+" "+par;
+            for(String par : values)
+                if (par.lastIndexOf(".") == -1)
+                    app = app + " " + par;
                 else
-                    app=app+" "+par.substring(0, par.lastIndexOf('.'));
-            }
+                    app = app + " " + par.substring(0, par.lastIndexOf('.'));
+
+            Log.i("NAME", app.toUpperCase());
             returns.add(app.toUpperCase());
         }
             return returns.toArray(array);
@@ -169,6 +171,7 @@ public class MainActivity extends Activity {
     }
 
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public void onPostClosed(int position){
         if (position == 0)
             gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData(R.array.arduino_boards));
@@ -182,6 +185,7 @@ public class MainActivity extends Activity {
         setTitle(mPlanetTitles[position]);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
     }
 
     /** Swaps fragments in the main content view */
@@ -189,14 +193,9 @@ public class MainActivity extends Activity {
     private void selectItem(final int position) {
         // Create a new fragment and specify the planet to show based on position
         mDrawerLayout.closeDrawer(mDrawerList);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-               onPostClosed(position);
-            }
-        }, 200);
+        onPostClosed(position);
 
-        //getActionBar().setHomeButtonEnabled(true);
+
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -240,7 +239,7 @@ public class MainActivity extends Activity {
         // Pass the event to ActionBarDrawerToggle, if it returns
         // true, then it has handled the app icon touch event
         if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
+       return true;
         }
         // Handle your other action bar items...
 
