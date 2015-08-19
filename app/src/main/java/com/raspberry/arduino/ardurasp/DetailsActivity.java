@@ -1,18 +1,11 @@
 package com.raspberry.arduino.ardurasp;
 
 import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.widget.TextView;
-
 import com.ortiz.touch.TouchImageView;
 
-import java.lang.reflect.Field;
 
 
 public class DetailsActivity extends Activity {

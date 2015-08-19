@@ -6,22 +6,18 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-        import android.support.annotation.Nullable;
-        import android.support.v4.app.Fragment;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * Created by hp1 on 21-01-2015.
- */
 public class Tab2 extends Fragment {
 
     private GridView grid_rasp;

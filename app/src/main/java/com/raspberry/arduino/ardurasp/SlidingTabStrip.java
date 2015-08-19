@@ -1,6 +1,6 @@
 package com.raspberry.arduino.ardurasp;
 
-import android.R;
+        import android.R;
         import android.content.Context;
         import android.graphics.Canvas;
         import android.graphics.Color;
@@ -10,7 +10,6 @@ import android.R;
         import android.view.View;
         import android.widget.LinearLayout;
 
-        import com.raspberry.arduino.ardurasp.SlidingTabLayout;
 
         class SlidingTabStrip extends LinearLayout {
 

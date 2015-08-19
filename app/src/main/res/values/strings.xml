@@ -24,6 +24,7 @@
         <item name="raspberry_pi_2_B">@drawable/raspberry_pi_2_b_</item>
     </array>
 
+    <string name="banner_ad_unit_id">ca-app-pub-5184694451285223/6794454796</string>
 
 
 </resources>

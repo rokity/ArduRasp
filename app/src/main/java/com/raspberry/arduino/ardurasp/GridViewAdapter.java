@@ -8,12 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
-/**
- * Created by riccardo on 31/07/15.
- */
+
 public class GridViewAdapter extends ArrayAdapter {
     private Context context;
     private int layoutResourceId;

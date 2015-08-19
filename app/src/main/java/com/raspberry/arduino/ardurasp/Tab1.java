@@ -16,14 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.RelativeLayout;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * Created by riccardo on 18/08/15.
- */
+
 public class Tab1 extends Fragment {
     private GridView gridView;
     private GridViewAdapter gridAdapter;

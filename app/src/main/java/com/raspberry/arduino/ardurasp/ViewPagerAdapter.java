@@ -1,17 +1,10 @@
 package com.raspberry.arduino.ardurasp;
 
-import android.content.Context;
-import android.content.Intent;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 
-/**
- * Created by hp1 on 21-01-2015.
- */
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     CharSequence Titles[]; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
