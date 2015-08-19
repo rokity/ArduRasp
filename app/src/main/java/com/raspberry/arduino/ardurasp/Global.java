@@ -7,4 +7,5 @@ import android.graphics.Bitmap;
  */
 public class Global {
     static Bitmap img;
+    static String desc;
 }

@@ -1,13 +1,18 @@
 package com.raspberry.arduino.ardurasp;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.widget.TextView;
 
 import com.ortiz.touch.TouchImageView;
+
+import java.lang.reflect.Field;
 
 
 public class DetailsActivity extends Activity {
@@ -22,7 +27,7 @@ public class DetailsActivity extends Activity {
 
         String title = getIntent().getStringExtra("title");
 
-        Bitmap bitmap = Global.img;
+
 
         TextView titleTextView = (TextView) findViewById(R.id.title);
         titleTextView.setText(title);
@@ -30,9 +35,16 @@ public class DetailsActivity extends Activity {
 
 
 
-        TouchImageView img = (TouchImageView) findViewById(R.id.img);
-        img.setImageBitmap(bitmap);
+        String file=title.toLowerCase().replace("\n","_").replace(" ", "");
+        int id=getResourceId(file, "drawable", getPackageName());
 
+
+
+        TouchImageView img = (TouchImageView) findViewById(R.id.img);
+        //  Bitmap bitmap = Global.img;
+
+        //  img.setImageBitmap(bitmap);
+        img.setImageResource(id);
 
 
     }
@@ -41,7 +53,15 @@ public class DetailsActivity extends Activity {
 
 
 
-
+    public  int getResourceId(String pVariableName, String pResourcename, String pPackageName)
+    {
+        try {
+            return getResources().getIdentifier(pVariableName, pResourcename, pPackageName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
 
 
 

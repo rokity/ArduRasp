@@ -1,101 +1,106 @@
 package com.raspberry.arduino.ardurasp;
 
-import android.annotation.TargetApi;
+
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Build;
-import android.os.Handler;
-import android.support.v4.widget.DrawerLayout;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+
+import android.support.v4.view.ViewPager;
+
+
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ListView;
+import android.widget.TextView;
+
+
 import java.util.ArrayList;
 
-public class MainActivity extends Activity {
+
+public class MainActivity extends ActionBarActivity {
 
 
 
-    private GridView gridView;
-    private GridViewAdapter gridAdapter;
+
     public Boolean on = false;
 
-    //Navigation Drawer
-    private String[] mPlanetTitles;
-    public DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    private ActionBarDrawerToggle mDrawerToggle;
 
 
 
+
+
+
+
+    Toolbar toolbar;
+    ViewPager pager;
+    ViewPagerAdapter adapter;
+    SlidingTabLayout tabs;
+    CharSequence Titles[]={"Arduino","Raspberry"};
+    int Numboftabs =2;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        overridePendingTransition(0,0);
-        mPlanetTitles = getResources().getStringArray(R.array.planets_array);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
 
-        gridView = (GridView) findViewById(R.id.gridView);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                ImageItem item = (ImageItem) parent.getItemAtPosition(position);
-
-                //Create intent
-                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                intent.putExtra("title", item.getTitle());
-                Global.img = item.getImage();
-
-                //Start details activity
-                startActivity(intent);
-            }
-        });
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
 
 
-        // Set the adapter for the list view
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, mPlanetTitles));
-        // Set the list's click listener
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
+        adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs);
 
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+        // Assigning ViewPager View and setting the adapter
+        pager = (ViewPager) findViewById(R.id.pager);
+        pager.setAdapter(adapter);
 
-            /** Called when a drawer has settled in a completely closed state. */
-            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                getActionBar().setTitle(mTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
+        // Assiging the Sliding Tab Layout View
+        tabs = (SlidingTabLayout) findViewById(R.id.tabs);
+        tabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
 
-            /** Called when a drawer has settled in a completely open state. */
-            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                getActionBar().setTitle(mDrawerTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
+        // Setting Custom Color for the Scroll bar indicator of the Tab View
 
-        if (savedInstanceState == null) {
-            selectItem(0);
-        }
+
+        // Setting the ViewPager For the SlidingTabsLayout
+        tabs.setViewPager(pager);
+
+
+
+
+
+
 
     }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -124,16 +129,68 @@ public class MainActivity extends Activity {
         String[] some_array = get_names_attribute(getResources().getStringArray(array));
 
 
+
         for (int i = 0; i < imgs.length(); i++) {
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), imgs.getResourceId(i, -1));
+
+
+
+            Bitmap bitmap=decodeResource(getResources(), imgs.getResourceId(i, -1));
             TypedValue typedValue = new TypedValue();
             imageItems.add(new ImageItem(bitmap, some_array[i]));
+
+
         }
         return imageItems;
     }
 
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
+    }
 
 
+    private static Bitmap decodeResource(Resources res, int id) {
+        Bitmap bitmap = null;
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, id, options);
+        options.inSampleSize = calculateInSampleSize(options, 100, 100);
+
+      /*  for (options.inSampleSize = 1; options.inSampleSize <= 32; options.inSampleSize++) {
+            try {
+                bitmap = BitmapFactory.decodeResource(res, id, options);
+                Log.d("INFO", "Decoded successfully for sampleSize " + options.inSampleSize);
+                break;
+            } catch (OutOfMemoryError outOfMemoryError) {
+// If an OutOfMemoryError occurred, we continue with for loop and next inSampleSize value
+                Log.e("INFO", "outOfMemoryError while reading file for sampleSize " + options.inSampleSize
+                        + " retrying with higher value");
+            }
+        }
+        */
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, id, options);
+
+       // return bitmap;
+    }
 
 
 
@@ -144,83 +201,15 @@ public class MainActivity extends Activity {
             String app="";
             for(String par : values)
                 if (par.lastIndexOf(".") == -1)
-                    app = app + " " + par;
+                    app = app + " " + par+"\n";
                 else
                     app = app + " " + par.substring(0, par.lastIndexOf('.'));
 
-            Log.i("NAME", app.toUpperCase());
+
             returns.add(app.toUpperCase());
         }
-            return returns.toArray(array);
+        return returns.toArray(new String[returns.size()]);
     }
-
-
-
-
-
-    private CharSequence mDrawerTitle;
-    private CharSequence mTitle;
-
-
-
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView parent, View view, int position, long id) {
-            selectItem(position);
-        }
-    }
-
-
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    public void onPostClosed(int position){
-        if (position == 0)
-            gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData(R.array.arduino_boards));
-        else
-            gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData(R.array.raspberry_boards));
-
-
-        gridView.setAdapter(gridAdapter);
-        // Highlight the selected item, update the title, and close the drawer
-        mDrawerList.setItemChecked(position, true);
-        setTitle(mPlanetTitles[position]);
-
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
-    }
-
-    /** Swaps fragments in the main content view */
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    private void selectItem(final int position) {
-        // Create a new fragment and specify the planet to show based on position
-        mDrawerLayout.closeDrawer(mDrawerList);
-        onPostClosed(position);
-
-
-    }
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    @Override
-    public void setTitle(CharSequence title) {
-        mTitle = title;
-        getActionBar().setTitle(mTitle);
-    }
-
-
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
-        mDrawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
-    }
-
-
 
 
 
@@ -238,9 +227,7 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Pass the event to ActionBarDrawerToggle, if it returns
         // true, then it has handled the app icon touch event
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-       return true;
-        }
+
         // Handle your other action bar items...
 
         return super.onOptionsItemSelected(item);
