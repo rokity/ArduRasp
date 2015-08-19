@@ -143,9 +143,9 @@ public class Tab1 extends Fragment {
             String app="";
             for(String par : values)
                 if (par.lastIndexOf(".") == -1)
-                    app = app + " " + par;
+                    app = app +par+' ';
                 else
-                    app = app + " " + par.substring(0, par.lastIndexOf('.'));
+                    app = app +par.substring(0, par.lastIndexOf('.'));
 
 
             returns.add(app.toUpperCase());

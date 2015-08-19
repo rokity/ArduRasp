@@ -35,7 +35,8 @@ public class DetailsActivity extends Activity {
 
 
 
-        String file=title.toLowerCase().replace("\n","_").replace(" ", "");
+        String file=title.toLowerCase().replace(" ", "_");
+        Log.d("FILE",file);
         int id=getResourceId(file, "drawable", getPackageName());
 
 
