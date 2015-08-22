@@ -65,7 +65,7 @@ public class Tab1 extends Fragment {
         final ArrayList<ImageItem> imageItems = new ArrayList<>();
         TypedArray imgs = getResources().obtainTypedArray(array);
         String[] some_array = get_names_attribute(getResources().getStringArray(array));
-        System.out.println(Arrays.toString(some_array));
+
 
 
         for (int i = 0; i < imgs.length(); i++) {

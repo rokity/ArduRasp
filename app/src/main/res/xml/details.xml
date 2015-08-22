@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="arduino_due">
+    <item name="Microcontroller">AT91SAM3X8E</item>
+    <item name="Operating Voltage">	 	3.3V</item>
+    <item name="Input Voltage (recommended)">	 	7-12V</item>
+    <item name="Input Voltage (limits)">	 	6-16V</item>
+    <item name="Digital I/O Pins">	 	54 (of which 12 provide PWM output)</item>
+    <item name="Analog Input Pins">	 	12</item>
+    <item name="Analog Outputs Pins">	 	2 (DAC)</item>
+    <item name="Total DC Output Current on all I/O lines">	 	130 mA</item>
+    <item name="DC Current for 3.3V Pin">	 	800 mA</item>
+    <item name="DC Current for 5V Pin">	 	800 mA</item>
+    <item name="Flash Memory">	 	512 KB all available for the user applications</item>
+    <item name="SRAM">	 	96 KB (two banks: 64KB and 32KB)</item>
+    <item name="Clock Speed">	 	84 MHz</item>
+    <item name="Length">	 	101.52 mm</item>
+    <item name="Width">	 	53.3 mm</item>
+    <item name="Weight">	 	36 g</item>
+</array>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <array name="arduino_uno">
+        <item name="Microcontroller"> 	ATmega328P</item>
+        <item name="Operating Voltage">  	5V</item>
+        <item name="Input Voltage (recommended)">  	7-12V</item>
+        <item name="Input Voltage (limit)">  	6-20V</item>
+        <item name="Digital I/O Pins">  	14 (of which 6 provide PWM output)</item>
+        <item name="PWM Digital I/O Pins">6</item>
+        <item name="Analog Input Pins">6</item>
+        <item name="DC Current per I/O Pin">  	20 mA</item>
+        <item name="DC Current for 3.3V Pin">  	50 mA</item>
+        <item name="Flash Memory">  	32 KB (ATmega328P) of which 0.5 KB used by bootloader</item>
+        <item name="SRAM">	2 KB (ATmega328P)</item>
+        <item name="EEPROM"> 	1 KB (ATmega328P)</item>
+        <item name="Clock Speed"> 	16 MHz</item>
+        <item name="Length"> 	68.6 mm</item>
+        <item name="Width"> 	53.4 mm</item>
+        <item name="Weight"> 	25 g</item>
+    </array>
+
+
+
+
+    <array name="arduino_yun">
+        <item name="Microcontroller">	ATmega32u4</item>
+        <item name="Operating Voltage">	5V</item>
+        <item name="Input Voltage">	5V</item>
+        <item name="Digital I/O Pins">	20</item>
+        <item name="PWM Channels">	7</item>
+        <item name="Analog Input Channels">	12</item>
+        <item name="DC Current per I/O Pin">	40 mA</item>
+        <item name="DC Current for 3.3V Pin">	50 mA</item>
+        <item name="Flash Memory">	32 KB (of which 4 KB used by bootloader)</item>
+        <item name="SRAM">	2.5 KB</item>
+        <item name="EEPROM">	1 KB</item>
+        <item name="Clock Speed">	16 MHz</item>
+        <item name="Processor">	Atheros AR9331</item>
+        <item name="Architecture">	MIPS @400MHz</item>
+        <item name="Operating Voltage">	3.3V</item>
+        <item name="Ethernet">	IEEE 802.3 10/100Mbit/s</item>
+        <item name="WiFi">	IEEE 802.11b/g/n</item>
+        <item name="USB Type-A">	2.0 Host</item>
+        <item name="Card Reader">	Micro-SD only</item>
+        <item name="RAM">	64 MB DDR2</item>
+        <item name="Flash Memory">	16 MB</item>
+        <item name="PoE">compatible 802.3af card support (see the note below)</item>
+        <item name="Length">	73 mm</item>
+        <item name="Width">	53 mm</item>
+        <item name="Weight">	32 g</item>
+    </array>
+
+
+
+
+
+
+
+
+    <array name="arduino_mega">
+
+        <item name="Microcontroller">	ATmega1280</item>
+        <item name="Operating Voltage">	5V</item>
+        <item name="Input Voltage (recommended)">	7-12V</item>
+        <item name="Input Voltage (limits)">	6-20V</item>
+        <item name="Digital I/O Pins">	54 (of which 15 provide PWM output)</item>
+        <item name="Analog Input Pins">	16</item>
+        <item name="DC Current per I/O Pin">	40 mA</item>
+        <item name="DC Current for 3.3V Pin">	50 mA</item>
+        <item name="Flash Memory">	128 KB of which 4 KB used by bootloader</item>
+        <item name="SRAM">	8 KB</item>
+        <item name="EEPROM">	4 KB</item>
+        <item name="Clock Speed">	16 MHz</item>
+    </array>
+
+
+
+
+
+
+
+
+
+
+    <array name="arduino_micro">
+        <item name="Microcontroller">	ATmega32U4</item>
+        <item name="Operating Voltage"> 	5V</item>
+        <item name="Input Voltage (recommended)"> 	7-12V</item>
+        <item name="Input Voltage (limit)"> 	6-20V</item>
+        <item name="Digital I/O Pins"> 	20</item>
+        <item name="PWM Channels"> 	7</item>
+        <item name="Analog Input Channels"> 	12</item>
+        <item name="DC Current per I/O Pin"> 	20 mA</item>
+        <item name="DC Current for 3.3V Pin"> 	50 mA</item>
+        <item name="Flash Memory"> 	32 KB (ATmega32U4)        of which 4 KB used by bootloader</item>
+        <item name="SRAM"> 	2.5 KB (ATmega32U4)</item>
+        <item name="EEPROM"> 	1 KB (ATmega32U4)</item>
+        <item name="Clock Speed"> 	16 MHz</item>
+        <item name=" Length"> 	48 mm</item>
+        <item name=" Width"> 	18 mm</item>
+        <item name="Weight"> 	13 g</item>
+    </array>
+
+
+
+
+
+    <array name="arduino_lilypadusb">
+
+        <item name="Microcontroller">	ATmega32u4</item>
+        <item name="Operating Voltage">	3.3V</item>
+        <item name="Input Voltage">	3.8V to 5V</item>
+        <item name="Digital I/O Pins">	9</item>
+        <item name="PWM Channels">	4</item>
+        <item name="Analog Input Channels">	4</item>
+        <item name="DC Current per I/O Pin">	40 mA</item>
+        <item name="Flash Memory">	32 KB (ATmega32u4) of which 4 KB used by bootloader</item>
+        <item name="SRAM">	2.5 KB (ATmega32u4)</item>
+        <item name="EEPROM">	1 KB (ATmega32u4)</item>
+        <item name="Clock Speed">	8 MHz</item>
+
+    </array>
+
+
+
+
+
+    <array name="arduino_mini">
+
+        <item name="Microcontroller">	ATmega328</item>
+        <item name="Operating Voltage">	3.3V or 5V (depending on model)</item>
+        <item name="Input Voltage">	3.35 -12 V (3.3V model) or 5 - 12 V (5V model)</item>
+        <item name="Digital I/O Pins">	14 (of which 6 provide PWM output)</item>
+        <item name="Analog Input Pins">	6</item>
+        <item name="DC Current per I/O Pin">	40 mA</item>
+        <item name="Flash Memory">	32 kB (of which 0.5 kB used by bootloader)</item>
+        <item name="SRAM">	2 kB</item>
+        <item name="EEPROM">	1 kB</item>
+        <item name="Clock Speed">	8 MHz (3.3V model) or 16 MHz (5V model)</item>
+
+
+
+
+
+
+
+    </array>
+    </resources>

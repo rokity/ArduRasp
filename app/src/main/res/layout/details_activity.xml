@@ -1,29 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#000">
 
-
-
-    <com.ortiz.touch.TouchImageView
-        android:id="@+id/img"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        />
-
-
-    <TextView
-        android:id="@+id/title"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="50dp">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#00000c"
-        android:padding="10dp"
-        android:textColor="#fff"
-        android:textSize="20dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <com.ortiz.touch.TouchImageView
+                android:id="@+id/img"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                >
+            </com.ortiz.touch.TouchImageView>
 
 
 
-</FrameLayout>
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#00000c"
+                android:padding="10dp"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+        </FrameLayout>
+    </ScrollView>
+    </FrameLayout>
+
+    <!--
+        <com.ortiz.touch.TouchImageView
+            android:id="@+id/img"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            >
+        </com.ortiz.touch.TouchImageView>
+
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#00000c"
+            android:padding="10dp"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#00000c"
+            android:padding="10dp"
+            android:text="@string/details"
+            android:textColor="#fff"
+            android:textSize="20dp"/>
+    -->
+
