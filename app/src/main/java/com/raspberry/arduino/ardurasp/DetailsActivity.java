@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -97,7 +98,6 @@ public class DetailsActivity extends Activity {
 
 
     }
-
 
 
 
