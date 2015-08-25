@@ -75,22 +75,22 @@
 
 
     <array name="arduino_uno">
-        <item name="Microcontroller"> 	ATmega328P</item>
-        <item name="Operating Voltage">  	5V</item>
-        <item name="Input Voltage (recommended)">  	7-12V</item>
-        <item name="Input Voltage (limit)">  	6-20V</item>
-        <item name="Digital I/O Pins">  	14 (of which 6 provide PWM output)</item>
-        <item name="PWM Digital I/O Pins">  6</item>
-        <item name="Analog Input Pins">  6</item>
-        <item name="DC Current per I/O Pin">  	20 mA</item>
-        <item name="DC Current for 3.3V Pin">  	50 mA</item>
-        <item name="Flash Memory">  	32 KB (ATmega328P) of which 0.5 KB used by bootloader</item>
-        <item name="SRAM">	2 KB (ATmega328P)</item>
-        <item name="EEPROM"> 	1 KB (ATmega328P)</item>
-        <item name="Clock Speed"> 	16 MHz</item>
-        <item name="Length"> 	68.6 mm</item>
-        <item name="Width"> 	53.4 mm</item>
-        <item name="Weight"> 	25 g</item>
+        <item name="Microcontroller  "> 	ATmega328P</item>
+        <item name="Operating Voltage  ">  	5V</item>
+        <item name="Input Voltage (recommended)  ">  	7-12V</item>
+        <item name="Input Voltage (limit)  ">  	6-20V</item>
+        <item name="Digital I/O Pins  ">  	14 (of which 6 provide PWM output)</item>
+        <item name="PWM Digital I/O Pins  ">  6</item>
+        <item name="Analog Input Pins  ">  6</item>
+        <item name="DC Current per I/O Pin  ">  	20 mA</item>
+        <item name="DC Current for 3.3V Pin  ">  	50 mA</item>
+        <item name="Flash Memory   ">  	32 KB (ATmega328P) of which 0.5 KB used by bootloader</item>
+        <item name="SRAM  ">	2 KB (ATmega328P)</item>
+        <item name="EEPROM  "> 	1 KB (ATmega328P)</item>
+        <item name="Clock Speed  "> 	16 MHz</item>
+        <item name="Length  "> 	68.6 mm</item>
+        <item name="Width  "> 	53.4 mm</item>
+        <item name="Weight  "> 	25 g</item>
     </array>
 
 
