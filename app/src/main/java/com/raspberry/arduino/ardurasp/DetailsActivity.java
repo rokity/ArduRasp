@@ -1,15 +1,21 @@
 package com.raspberry.arduino.ardurasp;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.ortiz.touch.TouchImageView;
 
 import org.xml.sax.SAXException;
@@ -22,79 +28,50 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 
-public class DetailsActivity extends Activity {
+public class DetailsActivity extends ActionBarActivity {
 
 
+
+
+    Toolbar toolbar;
+    ViewPager pager;
+    ViewPagerAdapterDetails adapter;
+    SlidingTabLayout tabs;
+    CharSequence Titles[]={"Board","Technical Specifications"};
+    int Numboftabs =2;
+
+
+    public String title = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details_activity);
 
+        title = getIntent().getStringExtra("title");
 
-        String title = getIntent().getStringExtra("title");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
-
-
-        TextView titleTextView = (TextView) findViewById(R.id.title);
-        titleTextView.setText(title);
-        Log.d("title", title);
-        int id=getResourceId(title.toLowerCase().replace(" ", "_"), "array", getPackageName());
-        Resources res = getResources();
-        String[] values = res.getStringArray(id);
-        //Context context = getApplicationContext();
-       // InputStream istream = context.getResources().openRawResource(R.xml.details);
-        ArrayList<ArrayList<String>> names=new ArrayList<ArrayList<String>>();
-        try {
-            XmlPullParser xpp=getResources().getXml(R.xml.details);
-
-            while (xpp.getEventType()!=XmlPullParser.END_DOCUMENT) {
-                if (xpp.getEventType()==XmlPullParser.START_TAG) {
-                    if (xpp.getName().equals("array")&&(xpp.getAttributeValue(0).equals(title.toLowerCase().replace(" ", "_")))) {
-                        ArrayList<String> array=new ArrayList<String>();
-                        System.out.println("NAME ARRAY"+xpp.getAttributeValue(0));
-                      array.add(xpp.getAttributeValue(0));
-                        xpp.next();
-
-                        while(xpp.getName().equals("item")){
-                            array.add(xpp.getAttributeValue(0));
-                          System.out.println(xpp.getAttributeValue(0));
-
-                          xpp.next();
-                          xpp.next();
-                          xpp.next();
+        creatToolBar();
 
 
 
 
 
-                      }
-                        names.add(array);
-
-
-                    }
-                }
-
-                xpp.next();
-            }
-        }
-        catch (Throwable t) {
-            Toast
-                    .makeText(this, "Request failed: " + t.toString(), Toast.LENGTH_LONG)
-                    .show();
-        }
 
 
 
-        int id_picture=getResourceId(title.toLowerCase().replace(" ", "_"), "drawable", getPackageName());
-        TouchImageView img = (TouchImageView) findViewById(R.id.img);
-               img.setImageResource(id_picture);
+
+
 
 
     }
@@ -114,15 +91,74 @@ public class DetailsActivity extends Activity {
 
 
 
-    public  int getResourceId(String pVariableName, String pResourcename, String pPackageName)
-    {
-        try {
-            return getResources().getIdentifier(pVariableName, pResourcename, pPackageName);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public void creatToolBar(){
+            toolbar = (Toolbar) findViewById(R.id.tool_bar_details);
+            setSupportActionBar(toolbar);
+
+
+            adapter =  new ViewPagerAdapterDetails(getSupportFragmentManager(),Titles,Numboftabs,title,getPackageName(),this);
+
+
+            pager = (ViewPager) findViewById(R.id.pager_details);
+            pager.setAdapter(adapter);
+
+
+            tabs = (SlidingTabLayout) findViewById(R.id.tabs_details);
+            tabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
+
+            // Setting Custom Color for the Scroll bar indicator of the Tab View
+
+
+            // Setting the ViewPager For the SlidingTabsLayout
+            tabs.setViewPager(pager);
+
+
         }
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

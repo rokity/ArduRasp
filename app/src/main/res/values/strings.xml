@@ -30,23 +30,23 @@
 
 
     <array name="arduino_due">
-    <item name="Microcontroller">AT91SAM3X8E</item>
+        <item name="Microcontroller">  AT91SAM3X8E</item>
         <item name="Operating Voltage">	 	3.3V</item>
-    <item name="Input Voltage (recommended)">	 	7-12V</item>
-    <item name="Input Voltage (limits)">	 	6-16V</item>
-    <item name="Digital I/O Pins">	 	54 (of which 12 provide PWM output)</item>
-<item name="Analog Input Pins">	 	12</item>
-    <item name="Analog Outputs Pins">	 	2 (DAC)</item>
-<item name="Total DC Output Current on all I/O lines">	 	130 mA</item>
-    <item name="DC Current for 3.3V Pin">	 	800 mA</item>
-<item name="DC Current for 5V Pin">	 	800 mA</item>
-    <item name="Flash Memory">	 	512 KB all available for the user applications</item>
-<item name="SRAM">	 	96 KB (two banks: 64KB and 32KB)</item>
-    <item name="Clock Speed">	 	84 MHz</item>
-<item name="Length">	 	101.52 mm</item>
-    <item name="Width">	 	53.3 mm</item>
-<item name="Weight">	 	36 g</item>
-</array>
+        <item name="Input Voltage (recommended)">	 	7-12V</item>
+        <item name="Input Voltage (limits)">	 	6-16V</item>
+        <item name="Digital I/O Pins">	 	54 (of which 12 provide PWM output)</item>
+        <item name="Analog Input Pins">	 	12</item>
+        <item name="Analog Outputs Pins">	 	2 (DAC)</item>
+        <item name="Total DC Output Current on all I/O lines">	 	130 mA</item>
+        <item name="DC Current for 3.3V Pin">	 	800 mA</item>
+        <item name="DC Current for 5V Pin">	 	800 mA</item>
+        <item name="Flash Memory">	 	512 KB all available for the user applications</item>
+        <item name="SRAM">	 	96 KB (two banks: 64KB and 32KB)</item>
+        <item name="Clock Speed">	 	84 MHz</item>
+        <item name="Length">	 	101.52 mm</item>
+        <item name="Width">	 	53.3 mm</item>
+        <item name="Weight">	 	36 g</item>
+    </array>
 
 
 
@@ -74,55 +74,54 @@
 
 
 
-<array name="arduino_uno">
-   <item name="Microcontroller"> 	ATmega328P</item>
-    <item name="Operating Voltage">  	5V</item>
-    <item name="Input Voltage (recommended)">  	7-12V</item>
-    <item name="Input Voltage (limit)">  	6-20V</item>
-    <item name="Digital I/O Pins">  	14 (of which 6 provide PWM output)</item>
-    <item name="PWM Digital I/O Pins">6</item>
-    <item name="Analog Input Pins">6</item>
-    <item name="DC Current per I/O Pin">  	20 mA</item>
-    <item name="DC Current for 3.3V Pin">  	50 mA</item>
-    <item name="Flash Memory">  	32 KB (ATmega328P) of which 0.5 KB used by bootloader</item>
-    <item name="SRAM">	2 KB (ATmega328P)</item>
-    <item name="EEPROM"> 	1 KB (ATmega328P)</item>
-    <item name="Clock Speed"> 	16 MHz</item>
-    <item name="Length"> 	68.6 mm</item>
-    <item name="Width"> 	53.4 mm</item>
-    <item name="Weight"> 	25 g</item>
-</array>
+    <array name="arduino_uno">
+        <item name="Microcontroller"> 	ATmega328P</item>
+        <item name="Operating Voltage">  	5V</item>
+        <item name="Input Voltage (recommended)">  	7-12V</item>
+        <item name="Input Voltage (limit)">  	6-20V</item>
+        <item name="Digital I/O Pins">  	14 (of which 6 provide PWM output)</item>
+        <item name="PWM Digital I/O Pins">  6</item>
+        <item name="Analog Input Pins">  6</item>
+        <item name="DC Current per I/O Pin">  	20 mA</item>
+        <item name="DC Current for 3.3V Pin">  	50 mA</item>
+        <item name="Flash Memory">  	32 KB (ATmega328P) of which 0.5 KB used by bootloader</item>
+        <item name="SRAM">	2 KB (ATmega328P)</item>
+        <item name="EEPROM"> 	1 KB (ATmega328P)</item>
+        <item name="Clock Speed"> 	16 MHz</item>
+        <item name="Length"> 	68.6 mm</item>
+        <item name="Width"> 	53.4 mm</item>
+        <item name="Weight"> 	25 g</item>
+    </array>
 
 
 
 
     <array name="arduino_yun">
-    <item name="Microcontroller">	ATmega32u4</item>
-    <item name="Operating Voltage">	5V</item>
-    <item name="Input Voltage">	5V</item>
-    <item name="Digital I/O Pins">	20</item>
-    <item name="PWM Channels">	7</item>
-    <item name="Analog Input Channels">	12</item>
-    <item name="DC Current per I/O Pin">	40 mA</item>
-    <item name="DC Current for 3.3V Pin">	50 mA</item>
-    <item name="Flash Memory">	32 KB (of which 4 KB used by bootloader)</item>
-    <item name="SRAM">	2.5 KB</item>
-    <item name="EEPROM">	1 KB</item>
-    <item name="Clock Speed">	16 MHz</item>
-    <item name="Linux microprocessor"></item>
-    <item name="Processor">	Atheros AR9331</item>
-    <item name="Architecture">	MIPS @400MHz</item>
-    <item name="Operating Voltage">	3.3V</item>
-    <item name="Ethernet">	IEEE 802.3 10/100Mbit/s</item>
-    <item name="WiFi">	IEEE 802.11b/g/n</item>
-    <item name="USB Type-A">	2.0 Host</item>
-    <item name="Card Reader">	Micro-SD only</item>
-    <item name="RAM">	64 MB DDR2</item>
-    <item name="Flash Memory">	16 MB</item>
-    <item name="PoE compatible 802.3af card support (see the note below)"></item>
-    <item name="Length">	73 mm</item>
-    <item name="Width">	53 mm</item>
-    <item name="Weight">	32 g</item>
+        <item name="Microcontroller">	ATmega32u4</item>
+        <item name="Operating Voltage">  5V</item>
+        <item name="Input Voltage">	 5V</item>
+        <item name="Digital I/O Pins">	20</item>
+        <item name="PWM Channels">	7</item>
+        <item name="Analog Input Channels">  12</item>
+        <item name="DC Current per I/O Pin">	40 mA</item>
+        <item name="DC Current for 3.3V Pin">	50 mA</item>
+        <item name="Flash Memory">	32 KB (of which 4 KB used by bootloader)</item>
+        <item name="SRAM">	2.5 KB</item>
+        <item name="EEPROM">	1 KB</item>
+        <item name="Clock Speed">	16 MHz</item>
+        <item name="Processor">	 Atheros AR9331</item>
+        <item name="Architecture">	 MIPS @400MHz</item>
+        <item name="Operating Voltage">	 3.3V</item>
+        <item name="Ethernet">	 IEEE 802.3 10/100Mbit/s</item>
+        <item name="WiFi">	IEEE 802.11b/g/n</item>
+        <item name="USB Type-A">	2.0 Host</item>
+        <item name="Card Reader">	Micro-SD only</item>
+        <item name="RAM">	64 MB DDR2</item>
+        <item name="Flash Memory">	 16 MB</item>
+        <item name="PoE">  compatible 802.3af card support (see the note below)</item>
+        <item name="Length">	73 mm</item>
+        <item name="Width">	  53 mm</item>
+        <item name="Weight">	32 g</item>
     </array>
 
 
@@ -134,15 +133,15 @@
 
     <array name="arduino_mega">
 
-       <item name="Microcontroller">	ATmega1280</item>
-        <item name="Operating Voltage">	5V</item>
+        <item name="Microcontroller">	ATmega1280</item>
+        <item name="Operating Voltage">	  5V</item>
         <item name="Input Voltage (recommended)">	7-12V</item>
         <item name="Input Voltage (limits)">	6-20V</item>
         <item name="Digital I/O Pins">	54 (of which 15 provide PWM output)</item>
-        <item name="Analog Input Pins">	16</item>
+        <item name="Analog Input Pins">	  16</item>
         <item name="DC Current per I/O Pin">	40 mA</item>
         <item name="DC Current for 3.3V Pin">	50 mA</item>
-        <item name="Flash Memory">	128 KB of which 4 KB used by bootloader</item>
+        <item name="Flash Memory">	  128 KB of which 4 KB used by bootloader</item>
         <item name="SRAM">	8 KB</item>
         <item name="EEPROM">	4 KB</item>
         <item name="Clock Speed">	16 MHz</item>
@@ -167,11 +166,11 @@
         <item name="Analog Input Channels"> 	12</item>
         <item name="DC Current per I/O Pin"> 	20 mA</item>
         <item name="DC Current for 3.3V Pin"> 	50 mA</item>
-        <item name="Flash Memory"> 	32 KB (ATmega32U4)        of which 4 KB used by bootloader</item>
-        <item name="SRAM"> 	2.5 KB (ATmega32U4)</item>
+        <item name="Flash Memory"> 	  32 KB (ATmega32U4)        of which 4 KB used by bootloader</item>
+        <item name="SRAM"> 	  2.5 KB (ATmega32U4)</item>
         <item name="EEPROM"> 	1 KB (ATmega32U4)</item>
         <item name="Clock Speed"> 	16 MHz</item>
-       <item name=" Length"> 	48 mm</item>
+        <item name=" Length"> 	48 mm</item>
         <item name=" Width"> 	18 mm</item>
         <item name="Weight"> 	13 g</item>
     </array>
@@ -183,16 +182,16 @@
     <array name="arduino_lilypadusb">
 
         <item name="Microcontroller">	ATmega32u4</item>
-        <item name="Operating Voltage">	3.3V</item>
-        <item name="Input Voltage">	3.8V to 5V</item>
-        <item name="Digital I/O Pins">	9</item>
-        <item name="PWM Channels">	4</item>
-        <item name="Analog Input Channels">	4</item>
+        <item name="Operating Voltage">	  3.3V</item>
+        <item name="Input Voltage">	  3.8V to 5V</item>
+        <item name="Digital I/O Pins">	 9</item>
+        <item name="PWM Channels">	 4</item>
+        <item name="Analog Input Channels">	  4</item>
         <item name="DC Current per I/O Pin">	40 mA</item>
-        <item name="Flash Memory">	32 KB (ATmega32u4) of which 4 KB used by bootloader</item>
-        <item name="SRAM">	2.5 KB (ATmega32u4)</item>
+        <item name="Flash Memory">	  32 KB (ATmega32u4) of which 4 KB used by bootloader</item>
+        <item name="SRAM">	  2.5 KB (ATmega32u4)</item>
         <item name="EEPROM">	1 KB (ATmega32u4)</item>
-        <item name="Clock Speed">	8 MHz</item>
+        <item name="Clock Speed">	 8 MHz</item>
 
     </array>
 
@@ -200,23 +199,32 @@
 
 
 
-    <array name="arduino_mini">
+    <array name="arduino_pro_mini">
 
         <item name="Microcontroller">	ATmega328</item>
-        <item name="Operating Voltage">	3.3V or 5V (depending on model)</item>
-        <item name="Input Voltage">	3.35 -12 V (3.3V model) or 5 - 12 V (5V model)</item>
-        <item name="Digital I/O Pins">	14 (of which 6 provide PWM output)</item>
-        <item name="Analog Input Pins">	6</item>
+        <item name="Operating Voltage">	   3.3V or 5V (depending on model)</item>
+        <item name="Input Voltage">	  3.35 -12 V (3.3V model) or 5 - 12 V (5V model)</item>
+        <item name="Digital I/O Pins">	  14 (of which 6 provide PWM output)</item>
+        <item name="Analog Input Pins">	  6</item>
         <item name="DC Current per I/O Pin">	40 mA</item>
-        <item name="Flash Memory">	32 kB (of which 0.5 kB used by bootloader)</item>
-        <item name="SRAM">	2 kB</item>
-        <item name="EEPROM">	1 kB</item>
-        <item name="Clock Speed">	8 MHz (3.3V model) or 16 MHz (5V model)</item>
+        <item name="Flash Memory">	  32 kB (of which 0.5 kB used by bootloader)</item>
+        <item name="SRAM">	  2 kB</item>
+        <item name="EEPROM">	 1 kB</item>
+        <item name="Clock Speed">	 8  MHz (3.3V model) or 16 MHz (5V model)</item>
+    </array>
 
 
+    <array name="raspberry_pi_1_a_">
 
-
-
+        <item name="Dimensions">   65mm x 56mm / 2.5" x 2.25" </item>
+        <item name="Processor">   ARM 700Mhz CPU </item>
+        <item name="USB">   One USB 2.0 Port - Keeping it compact means minifying the footprint as much as possible</item>
+        <item name="Video Output">   HDMI and Composite</item>
+        <item name="Sound">   L/R Stereo (via 3.5mm 4 Pole Cable)</item>
+        <item name="Memory">   256MB Ram</item>
+        <item name="Operating System">   Uses microSD card slot to load O/S</item>
+        <item name="Digital interfaces">   2 onboard ribbon slots for Camera and Display</item>
+        <item name="GPIO">   40 GPIO pins, backwards compatible to B board</item>
 
 
     </array>
@@ -227,4 +235,57 @@
 
 
 
-    </resources>
+    <array name="raspberry_pi_1_b_">
+
+
+        <item name="System-on-a-chip ">   Broadcom BCM2835 (CPU + GPU. SDRAM is a separate chip stacked on top) </item>
+        <item name="CPU">  700 MHz ARM11 ARM1176JZF-S core </item>
+        <item name="GPU">  Broadcom VideoCore IV,OpenGL ES 2.0,OpenVG 1080p30 H.264 high-profile encode/decode </item>
+        <item name="Memory (SDRAM)iB ">   256 MiB (until 15 Oct 2012); 512 MiB (since 15 Oct 2012)</item>
+        <item name="USB 2.0 ports">   2 (via integrated USB hub)</item>
+        <item name="Video outputs">  Composite video | Composite RCA, HDMI (not at the same time) </item>
+        <item name="Audio outputs">  TRS connector | 3.5 mm jack, HDMI </item>
+        <item name="Audio inputs">   None, but a USB mic or sound-card could be added </item>
+        <item name="Onboard Storage">   Secure Digital|SD / MMC / SDIO card slot </item>
+        <item name="Onboard Network">   10/100 wired Ethernet RJ45 </item>
+        <item name="Low-level peripherals  ">    26 General Purpose Input/Output (GPIO) pins, Serial Peripheral Interface Bus (SPI), I²C, I²S[4], Universal asynchronous receiver/transmitter (UART) </item>
+        <item name="Real-time clock">   None </item>
+        <item name="Power ratings">   700 mA, (3.5 W) </item>
+        <item name="Power source">   5 V (DC) via Micro USB type B or GPIO header </item>
+        <item name="Size">    85.0 x 56.0 mm x 17mm </item>
+        <item name="Weight">   40g </item>
+    </array>
+
+
+
+
+
+
+
+    <array name="raspberry_pi_2_b_">
+        <item name="System-on-a-chip ">   Broadcom BCM2836  </item>
+        <item name="CPU">   900MHz quad-core ARM Cortex-A7 </item>
+        <item name="GPU">   Broadcom VideoCore IV,OpenGL ES 2.0,OpenVG 1080p30 H.264 high-profile encode/decode </item>
+        <item name="Memory (SDRAM)iB ">   1024 MiB </item>
+        <item name="USB 2.0 ports">   4 (via intergrated USB hub and LAN9512) </item>
+        <item name="Video outputs">   HDMI | Composite video requires 4 Pole Adapter  </item>
+        <item name="Audio outputs">   TRS connector | 3.5 mm jack, HDMI </item>
+        <item name="Audio inputs">   None, but a USB mic or sound-card could be added </item>
+        <item name="Onboard Storage">   Micro Secure Digital / MicroSD slot  </item>
+        <item name="Onboard Network">   10/100 wired Ethernet RJ45  </item>
+        <item name="Low-level peripherals  ">   40 General Purpose Input/Output (GPIO) pins, Serial Peripheral Interface Bus (SPI), I²C, I²S,[4] I2C IDC Pins, Universal asynchronous receiver/transmitter (UART)  </item>
+        <item name="Real-time clock">   None </item>
+        <item name="Power ratings">   ~650 mA, (3.0 W) </item>
+        <item name="Power source">   5 V (DC) via Micro USB type B or GPIO header </item>
+        <item name="Size">   85.0 x 56.0 mm x 17mm</item>
+        <item name="Weight">   40g </item>
+    </array>
+
+
+
+
+
+
+
+
+</resources>
