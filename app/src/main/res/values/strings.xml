@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ArduRasp</string>
+    <string name="app_name">Arduino Raspberry</string>
 
     <string name="lorem_ipsum">ciao</string>
     <string name="drawer_open">Open navigation drawer</string>
